@@ -16,3 +16,6 @@ img {
   display: block;
   max-width: 100%;
 }
+.label {
+  font-size: 30px;
+}
