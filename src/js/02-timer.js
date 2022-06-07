@@ -46,6 +46,7 @@ const options = {
 
 flatpickr(input, options)
 
+
 function renderTimer(number) {
 dataDays.textContent = addLeadingZero(number.days)
 dataHours.textContent = addLeadingZero(number.hours) 
@@ -53,16 +54,24 @@ dataMinutes.textContent = addLeadingZero(number.minutes)
 dataSeconds.textContent = addLeadingZero(number.seconds)
 }
 
-
+let timerId = null;
 
 function timer(targetDate) {
-    setInterval(() => {
-      
-    const delta = new Date(input.value) - new Date();   
+   timerId = setInterval(() => {
+    
+    const delta = new Date(targetDate) - new Date()
 
    let dataItem = convertMs(delta)
-    renderTimer(dataItem);
-  }, 1000);
+     renderTimer(dataItem);
+      
+      
+   }, 1000);
+  if (btnStart.disabled = false) {
+    clearInterval(timerId)
+  }
+
+  btnStart.setAttribute("disabled", true)
+ 
 };
 
 function addLeadingZero(value) {
