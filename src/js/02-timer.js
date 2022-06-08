@@ -35,17 +35,17 @@ const options = {
     }
      else {
       btnStart.removeAttribute("disabled")
-      btnStart.addEventListener('click', show);
+      btnStart.addEventListener('click', timer);
       }
-      function show() {
-    timer(selectedDates[0]) 
-}
+//       function show() {
+//     timer(selectedDates[0]) 
+// }
   },
  
 };
 
-flatpickr(input, options)
-
+// flatpickr(input, options)
+const fp = flatpickr('#datetime-picker', options);
 
 function renderTimer(number) {
 dataDays.textContent = addLeadingZero(number.days)
@@ -59,16 +59,18 @@ let timerId = null;
 function timer(targetDate) {
    timerId = setInterval(() => {
     
-    const delta = new Date(targetDate) - new Date()
+    const selectedDate = fp.selectedDates[0].getTime()
+const delta = selectedDate  - new Date()
 
    let dataItem = convertMs(delta)
      renderTimer(dataItem);
       
       
    }, 1000);
-  if (btnStart.disabled = false) {
-    clearInterval(timerId)
-  }
+  input.disabled = true;
+  // if (btnStart.disabled = false) {
+  //   clearInterval(timerId)
+  // }
 
   btnStart.setAttribute("disabled", true)
  
