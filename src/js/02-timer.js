@@ -114,3 +114,5 @@ console.log(convertMs(24140000)); // {days: 0, hours: 6 minutes: 42, seconds: 20
  dataMinutes.style.fontSize = "30px"
  dataSeconds.style.fontSize = "30px"
  
+
+ 

@@ -12,7 +12,7 @@ console.log(amount);
 
 function createPromise(position, delay) {
     const shouldResolve = Math.random() > 0.3;
-    const promice = new Promise((reselve, reject) => {
+    const promise = new Promise((reselve, reject) => {
         setTimeout(() => {
            if (shouldResolve) {
     reselve({position, delay})
@@ -21,7 +21,7 @@ function createPromise(position, delay) {
   }
       }, delay)
   })
- return promice
+ return promise
 }
 
 form.addEventListener("submit", submitForm)
@@ -29,7 +29,8 @@ function submitForm(e) {
     e.preventDefault()
    
     const timer = setTimeout(() => {
-        for (let position = 0; position < amount.value; position += 1) {
+        
+        for (let position = 1; position < amount.value; position += 1) {
             let totalStep = (Number(delay.value)) + (Number(step.value)) * position
              createPromise(position, totalStep)
             .then(({ position, delay }) => {
